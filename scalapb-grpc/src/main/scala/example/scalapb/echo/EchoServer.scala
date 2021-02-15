@@ -12,7 +12,6 @@ object EchoServer {
     val server: Server =
       ServerBuilder
         .forPort(4770)
-        .directExecutor()
         .addService(EchoServiceGrpc.bindService(EchoService, ExecutionContext.global))
         .build
         .start
