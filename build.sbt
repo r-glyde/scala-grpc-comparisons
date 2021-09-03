@@ -13,6 +13,11 @@ lazy val akka = project.in(file("akka"))
   .enablePlugins(AkkaGrpcPlugin, JavaAppPackaging)
   .settings(dockerSettings)
   .settings(Compile / PB.protoSources += file("./proto"))
+  .settings(
+    libraryDependencies ++= Seq(
+      "com.typesafe.akka" %% "akka-http" % "10.2.6"
+    )
+  )
 
 lazy val scalagrpc = project.in(file("scalapb-grpc"))
   .enablePlugins(JavaAppPackaging)

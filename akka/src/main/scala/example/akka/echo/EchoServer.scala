@@ -9,11 +9,7 @@ import scala.concurrent.ExecutionContext
 object EchoServer {
 
   def main(args: Array[String]): Unit = {
-    val conf = ConfigFactory
-      .parseString("akka.http.server.preview.enable-http2 = on")
-      .withFallback(ConfigFactory.defaultApplication())
-
-    implicit val system: ActorSystem = ActorSystem("EchoService", conf)
+    implicit val system: ActorSystem = ActorSystem("EchoService")
     implicit val ec: ExecutionContext = system.dispatcher
 
     val handler = example.echo.EchoServiceHandler(EchoService)
